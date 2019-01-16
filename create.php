@@ -6,9 +6,9 @@
 	<link rel="stylesheet" href="css/basics.css" media="screen" title="no title" charset="utf-8">
 </head>
 <body>
-	<a href="/php-pdo/read.php">Liste des données</a>
+	<a href="read.php">Liste des données</a>
 	<h1>Ajouter</h1>
-	<form action="" method="post">
+	<form action="" method="get">
 		<div>
 			<label for="name">Name</label>
 			<input type="text" name="name" value="">
@@ -17,11 +17,11 @@
 		<div>
 			<label for="difficulty">Difficulté</label>
 			<select name="difficulty">
-				<option value="très facile">Très facile</option>
+				<option value="tres facile">Très facile</option>
 				<option value="facile">Facile</option>
 				<option value="moyen">Moyen</option>
 				<option value="difficile">Difficile</option>
-				<option value="très difficile">Très difficile</option>
+				<option value="tres difficile">Très difficile</option>
 			</select>
 		</div>
 		
@@ -41,3 +41,48 @@
 	</form>
 </body>
 </html>
+<?php
+$username="root";
+$servername="localhost";
+$password="";
+$dbname="reunion_island";
+
+
+try {
+    $conn = new PDO('mysql:host=localhost;dbname=reunion_island;charset=utf8', 'root', '');
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo ' connecté ';
+}
+catch(PDOException $e)
+    {
+
+    }
+
+
+
+
+    $name=(isset($_GET['name'])?$_GET['name']:null);
+    $difficulty=(isset($_GET['difficulty'])?$_GET['difficulty']:null);
+    $distance=(isset($_GET['distance'])?$_GET['distance']:null);
+    $duration=(isset($_GET['duration'])?$_GET['duration']:null);
+    $height_difference=(isset($_GET['height_difference'])?$_GET['height_difference']:null);
+
+
+
+if (!empty($name)) {
+    $stmt = $conn->prepare("INSERT INTO hiking(`name`,`difficulty`,`distance`,`duration`,`height_difference`)
+VALUES (?,?,?,?,?) ");
+
+
+    $stmt->bindParam(1, $name);
+    $stmt->bindParam(2, $difficulty);
+    $stmt->bindParam(3, $distance);
+    $stmt->bindParam(4, $duration);
+    $stmt->bindParam(5, $height_difference);
+    $stmt->execute();
+}
+
+
+
+
+

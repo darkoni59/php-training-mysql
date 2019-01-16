@@ -3,3 +3,54 @@ label, select, input{
   display: inline-block;
   margin: 5px 0;
 }
+h1{
+  text-align: center;
+
+}
+
+td{
+
+border-style: groove solid ;
+font-size: 1.5em;
+  font-family: "Arial Black";
+
+  padding-bottom: 20px;
+  padding-left: 50px;
+  text-align: center;
+
+
+}
+
+html{
+
+  background-image: url("https://www.selftracking.fr/wp-content/uploads/2017/03/14562175-Caucasian-male-climber-climbing-a-steep-wall-In-background-a-summer-alpine-landscape-Clear-sky-day-l-Stock-Photo.jpg");
+
+
+}
+button{
+  background-color: black;
+  color: white;
+
+
+}
+
+form{
+
+  border-style: groove solid ;
+  font-size: 1.5em;
+  font-family: "Arial Black";
+
+
+
+
+}
+a{
+  color: black;
+
+
+}
+#id,#diff,#distance,#durée{
+  background-color: blueviolet;
+
+
+}#déni,#nom{  background-color: blueviolet;}
